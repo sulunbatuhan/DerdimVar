@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>60986309324-j4r9rkh5pjf93ipg67leogba65i878vv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.60986309324-j4r9rkh5pjf93ipg67leogba65i878vv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA3tIg87R7t5DXwr8zCj1RD-35Hj3llOzA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>60986309324</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sulunbatuhan.DerdimVar</string>
+	<key>PROJECT_ID</key>
+	<string>derdimvar-83669</string>
+	<key>STORAGE_BUCKET</key>
+	<string>derdimvar-83669.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:60986309324:ios:eb0f54ca217d1e2a1fa069</string>
+</dict>
+</plist>

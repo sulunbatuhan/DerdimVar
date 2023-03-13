@@ -1,0 +1,60 @@
+//
+//  HashtagListCell.swift
+//  DerdimVar
+//
+//  Created by batuhan on 13.11.2022.
+//
+
+import UIKit
+
+class HashtagListHeader: UICollectionReusableView {
+   
+    static let identifier = "header"
+    
+    
+    let collectionViewHeader : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.scrollDirection = .horizontal
+        collection.register(MainHeaderCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        return collection
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .systemPink
+        addSubview(collectionViewHeader)
+        collectionViewHeader.delegate = self
+        collectionViewHeader.dataSource = self
+        collectionViewHeader.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 0, paddingBottom: 10, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
+    }
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
+extension HashtagListHeader {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
+        cell.layer.borderWidth = 0.6
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height:30)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    
+}
+extension HashtagListHeader : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{}
