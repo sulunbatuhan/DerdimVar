@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import JGProgressHUD
 
 extension UIView{
     func anchor(top: NSLayoutYAxisAnchor?,
@@ -42,6 +43,12 @@ extension UIView{
         }
     }
     
-   
+    func showHud(message:String,view:UIView){
+           let hud = JGProgressHUD(style: .light)
+           hud.textLabel.text = message
+           hud.show(in:view)
+           hud.dismiss(afterDelay: 1, animated: true)
+       }
+      
     
 }

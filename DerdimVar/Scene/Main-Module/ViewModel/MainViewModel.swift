@@ -9,3 +9,6 @@ import Foundation
 import Firebase
 import Alamofire
 
+class MainViewModel {
+    
+}

@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseCore
 
 class MainViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
+ 
+    
+    
+    private var dertlerCollectionRef : CollectionReference!
+    
     override func viewDidLoad() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -16,7 +23,29 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
         
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         navigationItem.title = "Ana Sayfa"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .done, target: self, action: #selector(messageBox))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        //dertlerCollectionRef = Firestore.firestore().collection(dertler_REF)
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        dertlerCollectionRef.getDocuments { snapshot, error in
+            if error != nil {
+                debugPrint("kayıtlar getirilemedi",error?.localizedDescription)
+                
+            }else {
+                guard let snap = snapshot else {return}
+                for document in snap.documents{
+                    
+                }
+            }
+        }
+    }
+    
+    @objc func messageBox(){
+        
     }
     
 }
@@ -47,9 +76,10 @@ extension MainViewController {
         return 1
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detail =  UINavigationController(rootViewController:  DetailVC())
-        detail.modalPresentationStyle = .fullScreen
-present(detail, animated: true)
+       let detail = UINavigationController(rootViewController:  DetailVC())
+        detail.modalPresentationStyle  = .fullScreen
+        detail.modalTransitionStyle = .crossDissolve
+       show(detail, sender: nil)
 
     }
 }

@@ -11,7 +11,7 @@ class HashtagListHeader: UICollectionReusableView {
    
     static let identifier = "header"
     
-    
+    let tagLists = [Categories]()
     let collectionViewHeader : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -38,12 +38,13 @@ extension HashtagListHeader {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
-        cell.layer.borderWidth = 0.6
+    
         return cell
     }
     
@@ -53,6 +54,10 @@ extension HashtagListHeader {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
     }
     
     

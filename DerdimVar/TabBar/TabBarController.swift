@@ -12,8 +12,8 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let main = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let mainNavigationController = UINavigationController(rootViewController: main)
+        //let main = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let mainNavigationController = UINavigationController(rootViewController: MainViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         let searchNavigationController = UINavigationController(rootViewController: SearchVC())
         let contentNavigationController = UINavigationController(rootViewController: ContentVC())
         let profileNavigationController = UINavigationController(rootViewController: ProfileVC())

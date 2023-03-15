@@ -8,11 +8,10 @@
 import Foundation
 
 
-enum Categories :String{
+enum Categories :String {
     case Gundem = "Gundem"
     case Siyaset = "Siyaset"
     case Saglik = "Sağlık"
     case Sorunlar = "Sorunlar"
     case Love = "İlişkiler"
-    
 }

@@ -20,7 +20,7 @@ class DetailVC: UIViewController {
        let wrt = UILabel()
         wrt.text = "sulunbatuhan"
         wrt.font = UIFont.boldSystemFont(ofSize: 14)
-        wrt.layer.borderWidth = 1
+      
         return wrt
     }()
     
@@ -28,7 +28,6 @@ class DetailVC: UIViewController {
     let postDate : UILabel = {
        let date = UILabel()
         date.text = "2 weeks ago"
-        date.layer.borderWidth = 1
         date.font = UIFont.systemFont(ofSize: 10)
         return date
     }()
@@ -36,7 +35,7 @@ class DetailVC: UIViewController {
     let likeButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
-        btn.layer.borderWidth = 1
+
         btn.tintColor = .black
         return btn
     }()
@@ -53,6 +52,7 @@ class DetailVC: UIViewController {
        let sv = UIScrollView()
         sv.layer.borderWidth = 1
         sv.alwaysBounceVertical = true
+        
         return sv
         
     }()
@@ -60,8 +60,9 @@ class DetailVC: UIViewController {
     let date : UILabel = {
        let date = UILabel()
         date.text = "jkasdhfkjshfkjasfhkjsahfklashfkalsfhkalsjdhfkjasfhkjlasdfhkajsfhkjsahfkjasfklahfklashdflkasjdfhalskdjfhasldkjfhasldkjfhasldkjfhaslkdjfhaslkdjfhalskdjhfaslkjfhasldkjfhalskdjfhasldkjfhasldkjfhasldkfjhasldkjfhasldkjfhaslkdjfhaslkdjfhaslkdjhfalskdjfhalskdjhfalksjdhfalksjdhfalsjdhfalskdjfhaslkjdfhalskdjhflaksjdhflkasjfhljsakdfhasldkjfhasklfj"
-        date.backgroundColor = .purple
-        date.font = UIFont.systemFont(ofSize: 10)
+
+        date.numberOfLines = 0
+        date.font = UIFont.systemFont(ofSize: 14)
         return date
     }()
     
@@ -69,6 +70,11 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: self, action: #selector(backToTheMain))
+        
+        title = "Derdim Var"
         view.backgroundColor = .white
         view.addSubview(imgWriter)
         view.addSubview(nameWriter)
@@ -80,7 +86,15 @@ class DetailVC: UIViewController {
         scrollView.addSubview(date)
       
     }
+    
+    
+    @objc func backToTheMain(){
+        dismiss(animated: true)
+    }
+    
     override func viewDidLayoutSubviews() {
+        
+        
         imgWriter.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: 0, width: 80, height: 80)
         nameWriter.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: imgWriter.trailingAnchor, trailing: likeButton.leadingAnchor, paddingTop: 20, paddingBottom: 0, paddingLeft: 12, paddingRight: -12, width: 0, height: 40)
         postDate.anchor(top: nameWriter.bottomAnchor, bottom: nil, leading: imgWriter.trailingAnchor, trailing: view.trailingAnchor, paddingTop: 8, paddingBottom: 0, paddingLeft: 12, paddingRight: -12, width: 0, height: 20)
@@ -92,6 +106,6 @@ class DetailVC: UIViewController {
         scrollView.anchor(top: imgWriter.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 12, paddingBottom: 12, paddingLeft: 12, paddingRight: -12, width: 0, height: 0)
         
         
-        date.anchor(top:scrollView.topAnchor , bottom: scrollView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, paddingTop: 2, paddingBottom: 2, paddingLeft: 2, paddingRight: 2, width: 0, height: 0)
+        date.anchor(top:scrollView.topAnchor , bottom: scrollView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, paddingTop: 2, paddingBottom: 2, paddingLeft: 2, paddingRight: -2, width: 0, height: 0)
     }
 }
