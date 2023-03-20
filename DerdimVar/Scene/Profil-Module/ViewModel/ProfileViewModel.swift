@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 
 protocol ProfileViewModelProtocol {
@@ -14,6 +15,8 @@ protocol ProfileViewModelProtocol {
 
 class ProfileViewModel{
     
-    
+    func addPhoto(){
+        
+    }
     
 }

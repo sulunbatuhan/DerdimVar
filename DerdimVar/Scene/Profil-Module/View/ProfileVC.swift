@@ -10,43 +10,48 @@ import FirebaseAuth
 import Firebase
 
 class ProfileVC: UITableViewController {
-
-   
-  
+    
+    
+    
     lazy var profileViewModel = ProfileViewModel()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileHeader.self, forHeaderFooterViewReuseIdentifier: ProfileHeader.identifier)
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.identifier)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Çıkış Yap", style: .done, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem?.tintColor = .black
-       
+        
     }
     
-
-
+    
+    
     
     @objc func signOut(){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-       
+        
         
         let signOut = UIAlertAction(title: "Oturumu Kapat", style: .destructive){_ in
-            //Auth.auth().signOut()
+            do {
+                try Auth.auth().signOut()
+                self.navigationController?.popToRootViewController(animated: true)
+                self.dismiss(animated: true)
+            }catch{
+                
+            }
+            
         }
-        let keepContinue = UIAlertAction(title: "Devam Et", style: .default)
-        alertController.addAction(signOut)
-        alertController.addAction(keepContinue)
-        present(alertController, animated: true)
-        
-        
+            let keepContinue = UIAlertAction(title: "Devam Et", style: .default)
+            alertController.addAction(signOut)
+            alertController.addAction(keepContinue)
+            self.present(alertController, animated: true)
+            
+            
+        }
     }
-}
 
 extension ProfileVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,5 +78,15 @@ extension ProfileVC {
         return 50
     }
     
+    
+    
+    
+    
+    fileprivate func getUser(){
+        guard  let gecerliKullaniciID = Auth.auth().currentUser?.uid else {return}
+        
+        
+        
+    }
     
 }

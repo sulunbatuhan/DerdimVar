@@ -16,6 +16,8 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
     
     private var dertlerCollectionRef : CollectionReference!
     
+  
+    
     override func viewDidLoad() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -27,11 +29,12 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
         navigationItem.rightBarButtonItem?.tintColor = .black
         
         //dertlerCollectionRef = Firestore.firestore().collection(dertler_REF)
+        
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        dertlerCollectionRef.getDocuments { snapshot, error in
+       /* dertlerCollectionRef.getDocuments { snapshot, error in
             if error != nil {
                 debugPrint("kayıtlar getirilemedi",error?.localizedDescription)
                 
@@ -41,7 +44,7 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
                     
                 }
             }
-        }
+        }*/
     }
     
     @objc func messageBox(){
@@ -55,7 +58,8 @@ extension MainViewController {
         return 10
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath)as! MainCollectionViewCell
+        
         
         return cell
     }

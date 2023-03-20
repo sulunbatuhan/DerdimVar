@@ -12,12 +12,13 @@ final class ProfileHeader: UITableViewHeaderFooterView{
     static let identifier = "header"
     
     
-    let userImage : UIImageView = {
-       let img = UIImageView()
+    let userImage : UIButton = {
+        let img = UIButton(type: .system)
         img.layer.cornerRadius = 50
-        img.image = UIImage(named: "profile")
+        img.setImage(UIImage(named: "profile"), for: .normal)
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFill
+        img.addTarget(self, action: #selector(changePhoto), for: .touchUpInside)
         return img
     }()
     
@@ -43,4 +44,26 @@ final class ProfileHeader: UITableViewHeaderFooterView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    @objc func changePhoto(){
+        let imgPickerController = UIImagePickerController()
+        imgPickerController.delegate = self
+      
+        
+        
+    }
+    
+}
+
+extension ProfileHeader: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let infoPhoto = info[.originalImage] as? UIImage
+        self.userImage.setImage(infoPhoto?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        
+        
+    }
 }

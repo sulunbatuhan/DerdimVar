@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class MainCollectionViewCell: UICollectionViewCell {
 
   static let identifier = "Cell"
     
+    var posts : Post? {
+        didSet {
+            if let url = URL(string:"" ){
+                //userImage.kf.setImage(with: <#T##Source?#>) = posts?.user.userImage
+                lblUsername.text = posts?.user.username
+                titleLabel.text = posts?.title
+                textLabel.text = posts?.text
+            }
+        }
+    }
     
     let userImage : UIImageView = {
        let img = UIImageView()

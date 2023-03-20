@@ -20,7 +20,6 @@
 		7485A84B28FDC52B00854D5B /* DerdimVarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A84A28FDC52B00854D5B /* DerdimVarTests.swift */; };
 		7485A85528FDC52B00854D5B /* DerdimVarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A85428FDC52B00854D5B /* DerdimVarUITests.swift */; };
 		7485A85728FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A85628FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift */; };
-		7485A86D28FE9BCA00854D5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7485A86C28FE9BCA00854D5B /* GoogleService-Info.plist */; };
 		749605ED2995028000788B40 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749605EC2995028000788B40 /* DetailVC.swift */; };
 		749605EF2995028A00788B40 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749605EE2995028A00788B40 /* DetailViewModel.swift */; };
 		749E0CE329BF39270057D30F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E0CE229BF39270057D30F /* Categories.swift */; };
@@ -86,7 +85,6 @@
 		7485A85028FDC52B00854D5B /* DerdimVarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DerdimVarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7485A85428FDC52B00854D5B /* DerdimVarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerdimVarUITests.swift; sourceTree = "<group>"; };
 		7485A85628FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerdimVarUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7485A86C28FE9BCA00854D5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		749605EC2995028000788B40 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		749605EE2995028A00788B40 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		749E0CE229BF39270057D30F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 				74C9807F2912B6BD0040F44B /* Network */,
 				74C9807A2912B63C0040F44B /* Scene */,
 				74C980972912BBD10040F44B /* SupportingFiles */,
-				7485A86C28FE9BCA00854D5B /* GoogleService-Info.plist */,
 				7485A84128FDC52B00854D5B /* Info.plist */,
 			);
 			path = DerdimVar;
@@ -597,7 +594,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7485A84028FDC52B00854D5B /* LaunchScreen.storyboard in Resources */,
-				7485A86D28FE9BCA00854D5B /* GoogleService-Info.plist in Resources */,
 				7485A83D28FDC52B00854D5B /* Assets.xcassets in Resources */,
 				7485A83B28FDC52A00854D5B /* Main.storyboard in Resources */,
 			);

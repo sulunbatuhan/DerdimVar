@@ -108,9 +108,9 @@ class LoginVC: UIViewController {
         viewModel.singIn(email: email, password: password) { result in
             if result == true {
                 print("result bool \(result)")
-                let main = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
-                main.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(main, animated: true)
+                let tabBar = UINavigationController(rootViewController: TabBarController())
+                tabBar.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(tabBar, animated: true)
             }
             else {
                 print("result bool \(result)")

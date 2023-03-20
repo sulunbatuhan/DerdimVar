@@ -45,8 +45,16 @@ class ContentVC: UIViewController {
     }
     
     @objc func shareButton(){
-       // guard let title = titleTextField, let text = contentTextView else {return}
-       // contentViewModel.postShare(title: title, text: text)
+        
+        guard let title = titleTextField.text, title.count > 0,!title.isEmpty else {return}
+        guard let text = contentTextView.text, text.count > 0 else {return}
+        
+        contentViewModel.postShare(title: title, text: text) { result in
+            if result == true {
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                
+            }
+        }
     }
 
 }

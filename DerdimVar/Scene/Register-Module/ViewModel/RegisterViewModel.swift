@@ -16,8 +16,11 @@ class RegisterViewModel {
                 completion(false)
                 return
             }
+            
             guard let createdUser = authResult?.user.uid else {return}
-            let saveData : [String:Any] = ["username":username,"userID":createdUser]
+            let saveData : [String:Any] = ["username":username,
+                                           "userID":createdUser,
+                                           "userCreationDate":FieldValue.serverTimestamp()]
             
             Firestore.firestore().collection("Users").document(createdUser).setData(saveData){
                 error in

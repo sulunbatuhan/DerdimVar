@@ -9,6 +9,7 @@ import UIKit
 import FirebaseCore
 import Firebase
 
+let currentUser = Auth.auth().currentUser?.uid
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

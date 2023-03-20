@@ -11,7 +11,8 @@ class HashtagListHeader: UICollectionReusableView {
    
     static let identifier = "header"
     
-    let tagLists = [Categories]()
+   
+    var list = [Categories]()
     let collectionViewHeader : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -27,6 +28,7 @@ class HashtagListHeader: UICollectionReusableView {
         collectionViewHeader.delegate = self
         collectionViewHeader.dataSource = self
         collectionViewHeader.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 0, paddingBottom: 10, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
+        
     }
     required init?(coder: NSCoder) {
         fatalError()

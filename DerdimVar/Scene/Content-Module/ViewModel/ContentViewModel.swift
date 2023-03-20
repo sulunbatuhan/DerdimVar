@@ -7,13 +7,23 @@
 
 import Foundation
 import FirebaseStorage
+import FirebaseAuth
+import FirebaseFirestore
 
 class ContentViewModel {
-    func postShare(title:String,text:String){
-        let postId = UUID().uuid
-        let post = Post(postData: <#T##[String : Any]#>)
-        let ref = Storage.storage().reference(withPath: "/Posts/\(postId)")
+    func postShare(title:String,text:String,completion:@escaping (Bool)->()){
+        guard let currentUser = Auth.auth().currentUser?.uid else {return}
+        let eklenecekDert = ["kullaniciID" : currentUser,
+                             "kullaniciDertBaslik": title,
+                             "kullaniciDertContent":text,
+                             "paylasimTarih":Timestamp(date: Date())] as [String:Any]
         
-        ref.putData(re, completion: <#T##((StorageMetadata?, Error?) -> Void)?##((StorageMetadata?, Error?) -> Void)?##(StorageMetadata?, Error?) -> Void#>)
+            var ref : DocumentReference? = nil
+        ref = Firestore.firestore().collection("Posts").document(currentUser).collection("DertPaylasimlari").addDocument(data: eklenecekDert){error in
+            if error != nil {
+                return
+            }
+            print("başarı ile kaydedildi")
+        }
     }
 }
