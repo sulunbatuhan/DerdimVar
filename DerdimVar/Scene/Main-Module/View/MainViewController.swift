@@ -7,60 +7,97 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseCore
+import Firebase
 
 class MainViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
- 
+    let refreshControl = UIRefreshControl()
     
-    
-    private var dertlerCollectionRef : CollectionReference!
-    
-  
+    var posts = [Post]()
     
     override func viewDidLoad() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(HashtagListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCell")
-        
-        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+ 
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: ContentVC.updateNotification, object: nil)
+        fetchData()
+        navigationSettings()
+        collectionViewSettings()
+       
+    }
+    
+    
+    
+    @objc private func messageBox(){
+        let messageVC = MessageVC()
+        messageVC.modalPresentationStyle = .fullScreen
+        present(messageVC, animated: true)
+    }
+    
+    
+    @objc private func update(){
+    }
+    
+    
+    
+    @objc private func refresh(){
+        fetchData()
+    }
+    
+    fileprivate func fetchData(){
+         
+         guard let currentUser = Auth.auth().currentUser?.uid else {return}
+        DispatchQueue.main.async {
+            
+            
+            Firestore.firestore().collection("Posts").document(currentUser).collection("dertler").addSnapshotListener{ snapshot, error in
+                self.collectionView.refreshControl?.endRefreshing()
+                if error != nil {
+                    return
+                }
+                snapshot?.documentChanges.forEach({ change in
+                    if change.type == .added{
+                        let veri = change.document.data()
+                        var post = Post(postData: veri)
+                        self.posts.append(post)
+                        
+                    }
+                })
+                self.posts.reversed()
+                self.collectionView.reloadData()
+            }
+        }
+         
+    }
+    
+    private func navigationSettings(){
         navigationItem.title = "Ana Sayfa"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .done, target: self, action: #selector(messageBox))
         navigationItem.rightBarButtonItem?.tintColor = .black
         
-        //dertlerCollectionRef = Firestore.firestore().collection(dertler_REF)
-        
-       
+        refreshControl.addTarget(self, action: #selector(refresh), for: .touchUpInside)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-       /* dertlerCollectionRef.getDocuments { snapshot, error in
-            if error != nil {
-                debugPrint("kayıtlar getirilemedi",error?.localizedDescription)
-                
-            }else {
-                guard let snap = snapshot else {return}
-                for document in snap.documents{
-                    
-                }
-            }
-        }*/
+    private func collectionViewSettings(){
+        collectionView.register(HashtagListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCell")
+        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collectionView.refreshControl = refreshControl
     }
     
-    @objc func messageBox(){
-        
-    }
+    
+    
     
 }
+
+
 //MARK: CollectionViewController
 extension MainViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return posts.count
+        
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath)as! MainCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
         
-        
+        cell.post = posts[indexPath.row]
         return cell
     }
     
@@ -72,18 +109,39 @@ extension MainViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 120)
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
+        let geciciCel = MainCollectionViewCell(frame: frame)
+        geciciCel.layoutIfNeeded()
+        let hedefBoyut = CGSize(width: view.frame.width, height: 200)
+        let tahminiBoyut = geciciCel.systemLayoutSizeFitting(hedefBoyut)
+        let yukseklik = max(120, tahminiBoyut.height)
+        return CGSize(width: view.frame.width, height:yukseklik)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       let detail = UINavigationController(rootViewController:  DetailVC())
+       let detail = DetailVC()
+        detail.post = posts[indexPath.row]
         detail.modalPresentationStyle  = .fullScreen
         detail.modalTransitionStyle = .crossDissolve
-       show(detail, sender: nil)
+        navigationController?.pushViewController(detail, animated: true)
 
     }
+}
+
+extension MainViewController : DetailVCDelegate {
+    func pressLikeButton(post: Post) {
+        
+    }
+    
+    func pressDislikeButton(post: Post) {
+        
+    }
+    
+    
 }

@@ -10,18 +10,18 @@ import Firebase
 import UIKit
 
 struct Post {
-    let user : User
+
     let userID : String?
     let title : String?
     let text : String?
-    let postDate : Timestamp?
+    let date : Timestamp?
     
-    init(user : User,postData : [String:Any]) {
-        self.user = user
+    init(postData : [String:Any]) {
+      
         self.userID = postData["userID"] as? String
         self.title = postData["title"] as? String
         self.text = postData["text"] as? String
-        self.postDate = postData["postDate"] as? Timestamp
+        self.date = postData["date"] as? Timestamp
     }
 }
 

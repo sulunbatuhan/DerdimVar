@@ -25,6 +25,7 @@ class ProfileVC: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Çıkış Yap", style: .done, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem?.tintColor = .black
         
+      
     }
     
     
@@ -32,8 +33,6 @@ class ProfileVC: UITableViewController {
     
     @objc func signOut(){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        
         let signOut = UIAlertAction(title: "Oturumu Kapat", style: .destructive){_ in
             do {
                 try Auth.auth().signOut()

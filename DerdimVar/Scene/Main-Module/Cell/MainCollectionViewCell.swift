@@ -12,14 +12,11 @@ final class MainCollectionViewCell: UICollectionViewCell {
 
   static let identifier = "Cell"
     
-    var posts : Post? {
+    var post : Post? {
         didSet {
-            if let url = URL(string:"" ){
-                //userImage.kf.setImage(with: <#T##Source?#>) = posts?.user.userImage
-                lblUsername.text = posts?.user.username
-                titleLabel.text = posts?.title
-                textLabel.text = posts?.text
-            }
+                titleLabel.text = post?.title
+                textLabel.text = post?.text
+                lblUsername.text = post?.userID
         }
     }
     
@@ -42,7 +39,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }()
     let titleLabel : UILabel = {
        let lbl = UILabel()
-        lbl.text = "bu bir deneme yazısıdır.Deneme yazısı test test yazısı farketmez."
         lbl.textAlignment = .natural
         lbl.numberOfLines = 2
         
@@ -53,7 +49,6 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     let textLabel : UILabel = {
        let lbl = UILabel()
-        lbl.text = "bu bir deneme yazısıdır.Deneme yazısı test yazısı farketmez."
         lbl.numberOfLines = 3
         lbl.font = UIFont.systemFont(ofSize: 12)
         lbl.tintColor = .systemGray2

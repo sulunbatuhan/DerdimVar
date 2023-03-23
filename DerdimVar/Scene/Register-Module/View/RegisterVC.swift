@@ -125,10 +125,10 @@ final class RegisterVC: UIViewController {
                 self.passwordTextField.text = ""
                 self.usernameTextField.text = ""
                 self.emailTextField.text = ""
-                self.view.showHud(message: "Kayıt Yapılıyor", view: self.view)
+                self.showHud(message: "Kayıt Yapılıyor", view: self.view)
                 
             }else {
-                self.view.showHud(message: "Kayıt yapılamadı", view: self.view)
+                self.showHud(message: "Kayıt yapılamadı", view: self.view)
                 print("result2",result)
             }
         }

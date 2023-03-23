@@ -114,7 +114,7 @@ class LoginVC: UIViewController {
             }
             else {
                 print("result bool \(result)")
-                self.view.showHud(message: "Giriş yapılamadı", view: self.view)
+                self.showHud(message: "Giriş yapılamadı", view: self.view)
             }
         }
     }

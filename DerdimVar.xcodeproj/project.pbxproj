@@ -20,6 +20,9 @@
 		7485A84B28FDC52B00854D5B /* DerdimVarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A84A28FDC52B00854D5B /* DerdimVarTests.swift */; };
 		7485A85528FDC52B00854D5B /* DerdimVarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A85428FDC52B00854D5B /* DerdimVarUITests.swift */; };
 		7485A85728FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485A85628FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift */; };
+		7489BB2329CB6F6B0061D1FA /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489BB2229CB6F6B0061D1FA /* EditProfile.swift */; };
+		7489BB2629CB8AC10061D1FA /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7489BB2529CB8AC10061D1FA /* MessageVC.swift */; };
+		7489BB2829CB8B5F0061D1FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7489BB2729CB8B5F0061D1FA /* GoogleService-Info.plist */; };
 		749605ED2995028000788B40 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749605EC2995028000788B40 /* DetailVC.swift */; };
 		749605EF2995028A00788B40 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749605EE2995028A00788B40 /* DetailViewModel.swift */; };
 		749E0CE329BF39270057D30F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E0CE229BF39270057D30F /* Categories.swift */; };
@@ -38,6 +41,7 @@
 		74C980A82912DD1F0040F44B /* MainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C980A72912DD1F0040F44B /* MainProtocol.swift */; };
 		74C980AE2912E10C0040F44B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 74C980AD2912E10C0040F44B /* Alamofire */; };
 		74C980B12912E26D0040F44B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 74C980B02912E26D0040F44B /* Kingfisher */; };
+		74CEA07329CB5283002CFB13 /* SearchCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CEA07229CB5283002CFB13 /* SearchCollectionCell.swift */; };
 		74F02D65298FCF6500D76032 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F02D64298FCF6500D76032 /* ProfileViewModel.swift */; };
 		74F02D67298FD00300D76032 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F02D66298FD00300D76032 /* ProfileHeader.swift */; };
 		74F02D69298FD0B400D76032 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F02D68298FD0B400D76032 /* UIView+Extension.swift */; };
@@ -85,6 +89,9 @@
 		7485A85028FDC52B00854D5B /* DerdimVarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DerdimVarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7485A85428FDC52B00854D5B /* DerdimVarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerdimVarUITests.swift; sourceTree = "<group>"; };
 		7485A85628FDC52B00854D5B /* DerdimVarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerdimVarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7489BB2229CB6F6B0061D1FA /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		7489BB2529CB8AC10061D1FA /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
+		7489BB2729CB8B5F0061D1FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		749605EC2995028000788B40 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		749605EE2995028A00788B40 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		749E0CE229BF39270057D30F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 		74C9809E2912CE220040F44B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		74C980A02912CE4E0040F44B /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
 		74C980A72912DD1F0040F44B /* MainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocol.swift; sourceTree = "<group>"; };
+		74CEA07229CB5283002CFB13 /* SearchCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionCell.swift; sourceTree = "<group>"; };
 		74F02D64298FCF6500D76032 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		74F02D66298FD00300D76032 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		74F02D68298FD0B400D76032 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				74F415B82927AB9B00F4E385 /* SearchVC.swift */,
+				74CEA07229CB5283002CFB13 /* SearchCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 				74C9807A2912B63C0040F44B /* Scene */,
 				74C980972912BBD10040F44B /* SupportingFiles */,
 				7485A84128FDC52B00854D5B /* Info.plist */,
+				7489BB2729CB8B5F0061D1FA /* GoogleService-Info.plist */,
 			);
 			path = DerdimVar;
 			sourceTree = "<group>";
@@ -232,6 +242,14 @@
 			path = DerdimVarUITests;
 			sourceTree = "<group>";
 		};
+		7489BB2429CB8AAE0061D1FA /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				7489BB2529CB8AC10061D1FA /* MessageVC.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		74C980782912B62F0040F44B /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +262,7 @@
 		74C9807A2912B63C0040F44B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				7489BB2429CB8AAE0061D1FA /* Message */,
 				74C9808B2912B7C80040F44B /* Login-Module */,
 				74C9808C2912B7D10040F44B /* Register-Module */,
 				74C9807B2912B6420040F44B /* Main-Module */,
@@ -341,6 +360,7 @@
 				747063742921544100209EBD /* ProfileVC.swift */,
 				74F02D6A298FD4AC00D76032 /* ProfileCell.swift */,
 				74F02D66298FD00300D76032 /* ProfileHeader.swift */,
+				7489BB2229CB6F6B0061D1FA /* EditProfile.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,8 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				7470638229216C3D00209EBD /* MainCollectionViewCell.swift */,
-				74706384292180B400209EBD /* HashtagListHeader.swift */,
 				74F02D712991786A00D76032 /* MainHeaderCell.swift */,
+				74706384292180B400209EBD /* HashtagListHeader.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -594,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7485A84028FDC52B00854D5B /* LaunchScreen.storyboard in Resources */,
+				7489BB2829CB8B5F0061D1FA /* GoogleService-Info.plist in Resources */,
 				7485A83D28FDC52B00854D5B /* Assets.xcassets in Resources */,
 				7485A83B28FDC52A00854D5B /* Main.storyboard in Resources */,
 			);
@@ -633,10 +654,13 @@
 				7485A83428FDC52A00854D5B /* AppDelegate.swift in Sources */,
 				7470638329216C3D00209EBD /* MainCollectionViewCell.swift in Sources */,
 				74C9809B2912C01C0040F44B /* Model.swift in Sources */,
+				7489BB2329CB6F6B0061D1FA /* EditProfile.swift in Sources */,
 				747063752921544200209EBD /* ProfileVC.swift in Sources */,
 				74F02D65298FCF6500D76032 /* ProfileViewModel.swift in Sources */,
+				7489BB2629CB8AC10061D1FA /* MessageVC.swift in Sources */,
 				74BB258728FF2E66007C71F6 /* extension.swift in Sources */,
 				749E0CE729C1EE840057D30F /* RegisterViewModel.swift in Sources */,
+				74CEA07329CB5283002CFB13 /* SearchCollectionCell.swift in Sources */,
 				74706385292180B400209EBD /* HashtagListHeader.swift in Sources */,
 				74C980A82912DD1F0040F44B /* MainProtocol.swift in Sources */,
 				749E0CE329BF39270057D30F /* Categories.swift in Sources */,

@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
 
         //let main = MainViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let mainNavigationController = UINavigationController(rootViewController: MainViewController(collectionViewLayout: UICollectionViewFlowLayout()))
-        let searchNavigationController = UINavigationController(rootViewController: SearchVC())
+        let searchNavigationController = UINavigationController(rootViewController: SearchVC(collectionViewLayout: UICollectionViewFlowLayout()))
         let contentNavigationController = UINavigationController(rootViewController: ContentVC())
         let profileNavigationController = UINavigationController(rootViewController: ProfileVC())
     
