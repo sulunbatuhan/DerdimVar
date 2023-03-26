@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import Firebase
+import JGProgressHUD
 
 class MainViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
@@ -18,18 +19,22 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
     override func viewDidLoad() {
  
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: ContentVC.updateNotification, object: nil)
-        fetchData()
+        
         navigationSettings()
         collectionViewSettings()
-       
+        fetchData()
     }
     
     
     
     @objc private func messageBox(){
-        let messageVC = MessageVC()
+        
+        
+       let messageVC = MessageVC()
         messageVC.modalPresentationStyle = .fullScreen
         present(messageVC, animated: true)
+        
+       
     }
     
     
@@ -39,7 +44,9 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
     
     
     @objc private func refresh(){
+        self.refreshControl.beginRefreshing()
         fetchData()
+        
     }
     
     fileprivate func fetchData(){
@@ -49,7 +56,7 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
             
             
             Firestore.firestore().collection("Posts").document(currentUser).collection("dertler").addSnapshotListener{ snapshot, error in
-                self.collectionView.refreshControl?.endRefreshing()
+              
                 if error != nil {
                     return
                 }
@@ -63,6 +70,8 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
                 })
                 self.posts.reversed()
                 self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
+              
             }
         }
          
@@ -72,14 +81,14 @@ class MainViewController: UICollectionViewController,UICollectionViewDelegateFlo
         navigationItem.title = "Ana Sayfa"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "message"), style: .done, target: self, action: #selector(messageBox))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        
+        collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .touchUpInside)
     }
     
     private func collectionViewSettings(){
         collectionView.register(HashtagListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCell")
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
-        collectionView.refreshControl = refreshControl
+        
     }
     
     

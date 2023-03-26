@@ -6,13 +6,13 @@
 //
 
 import UIKit
-import JGProgressHUD
 import Firebase
+import JGProgressHUD
 
 class ContentVC: UIViewController {
 
     
-    lazy var contentViewModel = ContentViewModel()
+    //lazy var contentViewModel = ContentViewModel()
     
     static let updateNotification = Notification.Name("update")
     
@@ -37,7 +37,10 @@ class ContentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .done, target: self, action: #selector(shareButton))
+        navigationItem.rightBarButtonItem?.tintColor = .black
         navigationSettings()
+       
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,25 +52,31 @@ class ContentVC: UIViewController {
     private func navigationSettings(){
         navigationController?.navigationBar.prefersLargeTitles = false
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .done, target: self, action: #selector(shareButton))
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .done, target: self, action: #selector(shareButton))
+        //navigationItem.rightBarButtonItem?.tintColor = .black
        navigationItem.title = "Derdim Var"
     }
     
     private func layoutSettings(){
         view.addSubview(titleTextField)
-        view.addSubview(contentTextView)
+       view.addSubview(contentTextView)
         titleTextField.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 30, paddingBottom: 0, paddingLeft: 30, paddingRight: -30, width: 0, height: 40)
         contentTextView.anchor(top: titleTextField.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingLeft: 30, paddingRight: -30, width: 0, height: 0)
+        
     }
     
+ 
+   
     
-    
-    @objc private func shareButton(){
-        print(Auth.auth().currentUser)
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        guard let title = titleTextField.text, title.count > 0,!title.isEmpty else {return}
-        guard let text = contentTextView.text, text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 else {return}
+    @objc func shareButton(){
+        
+        let hud = JGProgressHUD(style: .light)
+       
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        guard let title = self.titleTextField.text, title.count > 0,!title.isEmpty else {return}
+        guard let text = self.contentTextView.text, text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 else {return}
+        hud.textLabel.text = "Gönderiliyor"
+        hud.show(in: self.contentTextView)
         
         guard let currentUser = Auth.auth().currentUser?.uid else {return}
         
@@ -81,14 +90,27 @@ class ContentVC: UIViewController {
         ref = Firestore.firestore().collection("Posts").document(currentUser).collection("dertler").addDocument(data: eklenecekVeri){
             error in
             if error != nil {
-                self.showHud(message: "Kaydedilemedi", view: self.view)
+                hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                hud.textLabel.text = "Hata"
+                hud.detailTextLabel.text = "İçerik gönderilemedi"
+                hud.show(in: self.contentTextView)
                 return
             }
-            self.showHud(message: "Başarıyla kaydedildi", view: self.view)
+            
             NotificationCenter.default.post(name: ContentVC.updateNotification, object: nil)
             
+            hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+            hud.textLabel.text = "Başarıyla gönderildi"
+            hud.show(in: self.contentTextView)
             self.titleTextField.text = ""
             self.contentTextView.text = ""
+            
         }
+        hud.dismiss(afterDelay: 3)
+        
+       
+        
     }
+    
+    
 }

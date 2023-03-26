@@ -15,7 +15,7 @@ class ProfileCell: UITableViewCell {
         let lbl = UILabel()
         lbl.text = "Ayarlar"
         lbl.textAlignment = .center
-        lbl.font = UIFont.systemFont(ofSize: 15)
+        lbl.font = UIFont.systemFont(ofSize: 12)
         lbl.tintColor = .black
         return lbl
     }()
@@ -23,9 +23,11 @@ class ProfileCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         addSubview(lbl)
-        lbl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         lbl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        lbl.anchor(top: nil, bottom: nil, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 20, paddingRight: 20, width: 0, height: 40)
     }
+    
+   
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
